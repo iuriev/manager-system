@@ -1,0 +1,53 @@
+.wrapper {
+  display: flex;
+  justify-content: flex-start;
+  padding: 50px;
+  align-items: flex-start;
+  flex-direction: column;
+}
+
+.playerBlock{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  min-width: 300px;
+  min-height: 500px;
+}
+
+.playerInfoBlock{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.buttonsBlock{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.playerInfoRow{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  min-height: 50px;
+  align-items: center;
+}
+
+.rowTitle{
+  width: 150px;
+  font-weight: bold;
+}
+
+.rowDataTitle{
+  width: 400px;
+}
+
+.playerImage{
+  display: flex;
+  justify-content: center;
+}
+
