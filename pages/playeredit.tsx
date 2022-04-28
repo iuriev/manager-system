@@ -5,7 +5,8 @@ import styles from "../styles/Players.module.scss";
 import api from "../server/config"
 import store from "../store";
 import {observer} from "mobx-react-lite";
-import {Button, Stack} from "@mui/material";
+import {Button, FormControl, InputLabel, MenuItem, Select, Stack} from "@mui/material";
+import { POSITION } from '../types/types';
 
 const PlayerEditView = () => {
     const router = useRouter();
@@ -22,11 +23,13 @@ const PlayerEditView = () => {
         }
     }, [id]);
 
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault();
-        api.savePlayer(store.player)
-        store.updatePlayer(store.player);
-        Router.push('/');
+        await api.savePlayer(store.player)
+        await store.updatePlayer(store.player);
+        await Router.push('/');
+        await store.resetPlayer();
+
     }
 
     const onInputChange = (e) => {
@@ -38,6 +41,28 @@ const PlayerEditView = () => {
         Router.back();
     }
 
+    const convertBase64 = (file) => {
+        return new Promise((resolve, reject) => {
+            const fileReader = new FileReader();
+            fileReader.readAsDataURL(file);
+
+            fileReader.onload = () => {
+                resolve(fileReader.result);
+            };
+
+            fileReader.onerror = (error) => {
+                reject(error);
+            };
+        });
+    };
+
+    const uploadImage = async (event) => {
+        const file = event.target.files[0];
+        const base64 = await convertBase64(file);
+        store.player.imageUrl = base64.toString();
+    };
+
+
     const title = id
         ? 'Edit player'
         : 'Add a new player';
@@ -46,12 +71,12 @@ const PlayerEditView = () => {
         <Head>
             <title>{title}</title>
         </Head>
-
-        <h2>{title}</h2>
-
         <form onSubmit={onSubmit}>
             <div className={styles.playerBlock}>
                 <div className={styles.playerInfoBlock}>
+                    <div>
+                        <h2>Edit information</h2>
+                    </div>
                     <div className={styles.playerInfoRow}>
                         <div className={styles.rowTitle}>Last name:</div>
                         <input className={styles.rowDataTitle} type="text" name="lastName" value={store.player.lastName}
@@ -70,24 +95,51 @@ const PlayerEditView = () => {
                     </div>
                     <div className={styles.playerInfoRow}>
                         <div className={styles.rowTitle}>Position:</div>
-                        <input className={styles.rowDataTitle} type="text" name="position"
-                               value={store.player.position}
-                               onChange={onInputChange} autoFocus autoComplete="off"/>
+                        <FormControl sx={{ m: 1, minWidth: 400 }} size="small">
+                            <InputLabel id="demo-select-small">Position</InputLabel>
+                            <Select
+                                labelId="demo-select-small"
+                                id="demo-select-small"
+                                value={store.player.position}
+                                label="Position"
+                                onChange={(event) => store.player.position = event.target.value}>
+                                {
+                                    Object.keys(POSITION).map(key => {
+                                        return <MenuItem value={key} key={key}>{key}</MenuItem>
+                                    })
+                                }
+                            </Select>
+                        </FormControl>
                     </div>
-                    <div className={styles.playerInfoRow}>
-                        <div className={styles.rowTitle}>Skills:</div>
-                        <div className={styles.rowDataTitle}>
-                            {/*<ul>{player.skills.map(item => <li key={item}>{item}</li>)}</ul>*/}
+                </div>
+                <div className={styles.playerInfoBlock}>
+                    <div style={{margin: '24px'}}>
+                        <h2>Upload Image</h2>
+                    </div>
+                    <div style={{ padding: '16px'}}>
+                        <input
+                            className="form-control form-control-lg"
+                            id="selectAvatar"
+                            type="file"
+                            onChange={uploadImage}
+                        />
+                    </div>
+                    <div className="container">
+                        <div className="row">
+                            <div className="col">
+                                <h6>Image Preview:</h6>
+                                <img className={styles.imgPreview} id="avatar" src={store.player.imageUrl}/>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <Stack direction="row" spacing={2}>
-                    <Button variant="contained" color="secondary" onClick={onBack}>Back</Button>
-                    <Button type="submit" variant="contained" color="success">
-                        Save
-                    </Button>
-                </Stack>
             </div>
+            <Stack direction="row" spacing={2} justifyContent={'center'}>
+                <Button variant="contained" color="secondary" onClick={onBack}>Back</Button>
+                <Button type="submit" variant="contained" color="success">
+                    Save
+                </Button>
+            </Stack>
         </form>
     </>)
 };

@@ -51,7 +51,7 @@ class LocalStorageAPI {
                     x.imageUrl = item.imageUrl;
                     x.age = item.age;
                     x.position = item.position;
-                    x.skills = item.position;
+                    x.skills = item.skills;
                 }
             }
         }

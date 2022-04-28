@@ -11,7 +11,7 @@ class PlayersStore {
         imageUrl: "",
         age: "",
         position: "",
-        skills: "",
+        skills: [],
     };
     players = [];
 
@@ -36,11 +36,9 @@ class PlayersStore {
                 x.imageUrl = player.imageUrl;
                 x.age = player.age;
                 x.position = player.position;
-                x.skills = player.position;
+                x.skills = player.skills;
             }
         }
-        this.resetPlayer();
-
     }
 
     resetPlayer = () => {

@@ -6,7 +6,6 @@
         "imageUrl": "/images/p78830.png",
         "age": 13,
         "position":"striker",
-        "skills": []
     },
     {
         "id": "2",
@@ -15,7 +14,6 @@
         "imageUrl": "/images/p78830.png",
         "age": 13,
         "position":"goalkeeper",
-        "skills": []
     },
     {
         "id": "3",
@@ -24,6 +22,5 @@
         "imageUrl": "/images/p78830.png",
         "age": 12,
         "position": "midfielder",
-        "skills": ["pass", "shoot", "vision"]
     }
 ]
