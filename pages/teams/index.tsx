@@ -5,7 +5,7 @@ import styles from '../../styles/Players.module.scss';
 import {ITeam} from "../../types/types";
 import {teams} from "../../static/teams";
 
-export const getStaticProps = async () => {
+export const getServerSideProps = async () => {
   //   const response = await fetch(`${process.env.API_HOST}/teamsdata`);
   //  const data : ITeam[]= await response.json();
     const data  = teams;
@@ -20,7 +20,6 @@ export const getStaticProps = async () => {
         props: {
             teams: data
         },
-        revalidate: 10,
     };
 };
 
@@ -34,7 +33,7 @@ const Teams = ({ teams } : { teams : ITeam[] }) => {
             <div className={styles.wrapper}>
                 {
                     teams.map(({id, name, foundation }) => (
-                        <Link key={id} href={`/players/${id}`}>
+                        <Link key={id} href={`/teams/${id}`}>
                             <a>{`${id} ${name} ${foundation}`}</a>
                         </Link>
                     ))

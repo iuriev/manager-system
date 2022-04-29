@@ -58,6 +58,7 @@ export const getStaticProps = async (context : getStaticPropsContext ) => {
         props: {
             team
         },
+        revalidate: 60,
     };
 };
 
@@ -71,7 +72,7 @@ const Team = ({ team } : teamProps) => {
             <Head>
                 <title>{team.id}</title>
             </Head>
-            <Heading text="Player info:"/>
+            <Heading text="team details:"/>
             <div className={styles.playerBlock}>
                 <div className={styles.playerInfoBlock}>
                     <div className={styles.playerInfoRow}>
@@ -99,7 +100,7 @@ const Team = ({ team } : teamProps) => {
                     <Image
                         alt="logo"
                         src={team.imageUrl}
-                        width={150}
+                        width={250}
                         height={250}
                     />
                 </div>

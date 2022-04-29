@@ -18,10 +18,10 @@ export interface ITeam {
 }
 
 export enum POSITION {
-    Goalkeeper,
-    Defender,
-    Midfielder,
-    Striker,
+    goalkeeper = "Goalkeeper",
+    defender = "Defender",
+    midfielder = "Midfielder",
+    striker = "Striker",
 }
 
 
