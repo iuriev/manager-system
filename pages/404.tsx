@@ -23,7 +23,7 @@ const Error = () => {
         <Heading tag="h2" text="Something is going wrong..." />
       </div>
     </div>
-  )
+  );
 };
 
 export default Error;

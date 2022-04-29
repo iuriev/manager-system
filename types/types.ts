@@ -4,8 +4,8 @@ export default interface IPlayer {
     lastName: string
     age: number
     position: string
-    skills: string[]
     imageUrl: string
+    [key: string]: any;
 }
 
 export enum POSITION {

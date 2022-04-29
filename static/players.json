@@ -1,11 +1,11 @@
 [
     {
         "id": "1",
-        "firstName": "Alexxxxxxxxxxxx",
+        "firstName": "Alex",
         "lastName": "Lowson",
         "imageUrl": "/images/p78830.png",
         "age": 13,
-        "position":"striker",
+        "position":"striker"
     },
     {
         "id": "2",
@@ -13,7 +13,7 @@
         "lastName": "Jameson",
         "imageUrl": "/images/p78830.png",
         "age": 13,
-        "position":"goalkeeper",
+        "position":"goalkeeper"
     },
     {
         "id": "3",
@@ -21,6 +21,6 @@
         "lastName": "Gadner",
         "imageUrl": "/images/p78830.png",
         "age": 12,
-        "position": "midfielder",
+        "position": "midfielder"
     }
 ]

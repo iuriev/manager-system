@@ -1,8 +1,8 @@
-import {observer} from "mobx-react-lite"
-import Link from 'next/link'
-import api from "../server/config"
-import store from "../store"
-import {useEffect} from 'react'
+import {observer} from "mobx-react-lite";
+import Link from 'next/link';
+import api from "../server/config";
+import store from "../store";
+import {useEffect} from 'react';
 import Head from "next/head";
 import Heading from "../components/Heading";
 import styles from "../styles/Players.module.scss";
@@ -37,7 +37,7 @@ const Home = () => {
                     variant="outlined">Add a new player</Button>
             </Link>
         </>
-    )
+    );
 };
 
 export default observer(Home);

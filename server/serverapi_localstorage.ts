@@ -1,13 +1,14 @@
-import axios from "axios"
+import axios from "axios";
+import IPlayer from "../types/types";
 
 const KEY = "players";
 
 class LocalStorageAPI {
     queryPlayers() {
-        let value = localStorage.getItem(KEY);
+        const value = localStorage.getItem(KEY);
 
         if (!value) {
-            let url = "/static/players.json";
+            const url = "/static/players.json";
             axios.get(url)
                 .then(reply => {
                     localStorage.setItem(KEY, JSON.stringify(reply.data));
@@ -18,55 +19,59 @@ class LocalStorageAPI {
         }
     }
 
-    getPlayer(id) {
-        id = parseInt(id);
-        let value = localStorage.getItem(KEY);
-        let data = JSON.parse(value) || [];
+    getPlayer(id : string) {
+        const value : string | null = localStorage.getItem(KEY);
+        
+        if (value) {
+            const data = JSON.parse(value) || [];
 
-        for (const x of data) {
-            if (x.id == id) {
-                return x;
-            }
-        }
-
-        return false;
-
-    }
-
-    savePlayer(item) {
-        let value = localStorage.getItem(KEY);
-        let players = JSON.parse(value);
-
-        if (!item.id) {
-            // create object
-            const seconds = Math.floor(Date.now() / 1000);
-            item.id = seconds;
-            players.push(item);
-        } else {
-            // edit object
-            for (const x of players) {
-                if (x.id == item.id) {
-                    x.firstName = item.firstName;
-                    x.lastName = item.lastName;
-                    x.imageUrl = item.imageUrl;
-                    x.age = item.age;
-                    x.position = item.position;
-                    x.skills = item.skills;
+            for (const x of data) {
+                if (x.id === id) {
+                    return x;
                 }
             }
+            
         }
-
-        localStorage.setItem(KEY, JSON.stringify(players));
+        
+        return false;
     }
 
-    deletePlayer(id) {
-        id = parseInt(id);
+    savePlayer(item : IPlayer) {
+        const value : string | null = localStorage.getItem(KEY);
+        
+        if (value) {
+            const players : IPlayer[] = JSON.parse(value);
 
-        let value = localStorage.getItem(KEY);
-        let players = JSON.parse(value);
+            if (!item.id) {
+                item.id = Math.floor(Date.now() / 1000).toString();
+                players.push(item);
+            } else {
+                for (const x of players) {
+                    if (x.id == item.id) {
+                        x.firstName = item.firstName;
+                        x.lastName = item.lastName;
+                        x.imageUrl = item.imageUrl;
+                        x.age = item.age;
+                        x.position = item.position;
+                        x.skills = item.skills;
+                    }
+                }
+            }
 
-        players = players.filter(item => item.id !== id)
-        localStorage.setItem(KEY, JSON.stringify(players));
+            localStorage.setItem(KEY, JSON.stringify(players));
+        }
+    }
+
+    deletePlayer(id: string) {
+        const value : string | null = localStorage.getItem(KEY);
+        
+        if (value) {
+            let players : IPlayer[]= JSON.parse(value);
+
+            players = players.filter(item => item.id !== id);
+            localStorage.setItem(KEY, JSON.stringify(players)); 
+        } 
+        
     }
 }
 

@@ -1,33 +1,34 @@
 import { configure, makeAutoObservable } from "mobx";
+import IPlayer from "./types/types";
 configure({
     enforceActions: "never",
 });
 
 class PlayersStore {
-    player = {
+    player : IPlayer = {
         id: "",
         firstName: "",
         lastName: "",
         imageUrl: "",
-        age: "",
+        age: 0,
         position: "",
-        skills: [],
+
     };
-    players = [];
+    players : IPlayer [] = [];
 
     constructor() {
         makeAutoObservable(this);
     }
 
-    setPlayers = (players) => {
+    setPlayers = (players : IPlayer[]) => {
         this.players = players || [];
-    }
+    };
 
-    setPlayer = player => {
+    setPlayer = (player : IPlayer) => {
         this.player = player;
-    }
+    };
 
-    updatePlayer = player => {
+    updatePlayer = (player : IPlayer) => {
         this.player = player;
         for (const x of this.players) {
             if (x.id === player.id) {
@@ -36,10 +37,9 @@ class PlayersStore {
                 x.imageUrl = player.imageUrl;
                 x.age = player.age;
                 x.position = player.position;
-                x.skills = player.skills;
             }
         }
-    }
+    };
 
     resetPlayer = () => {
         this.player = {
@@ -49,16 +49,11 @@ class PlayersStore {
             imageUrl: "",
             age: 0,
             position: "",
-            skills: "",
         };
-    }
+    };
 
     get count() {
         return this.players.length;
-    }
-
-    addPlayer(obj) {
-        this.players.push(obj);
     }
 }
 

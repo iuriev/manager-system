@@ -1,8 +1,8 @@
-import Head from 'next/head'
-import Router, {useRouter} from 'next/router'
-import {useEffect} from 'react'
+import Head from 'next/head';
+import Router, {useRouter} from 'next/router';
+import React, {useEffect} from 'react';
 import styles from "../styles/Players.module.scss";
-import api from "../server/config"
+import api from "../server/config";
 import store from "../store";
 import {observer} from "mobx-react-lite";
 import {Button, FormControl, InputLabel, MenuItem, Select, Stack} from "@mui/material";
@@ -10,43 +10,44 @@ import { POSITION } from '../types/types';
 
 const PlayerEditView = () => {
     const router = useRouter();
-    const {id} = router.query;
+    const { id } = router.query;
 
     useEffect(() => {
         if (id) {
             store.resetPlayer();
-            const player = api.getPlayer(id);
+            const player = api.getPlayer(id as string);
 
             if (player) {
-                store.setPlayer(player)
+                store.setPlayer(player);
             }
         }
     }, [id]);
 
-    const onSubmit = async (e) => {
+    const onSubmit = async (e : React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
-        await api.savePlayer(store.player)
+        await api.savePlayer(store.player);
         await store.updatePlayer(store.player);
         await Router.push('/');
         await store.resetPlayer();
+    };
 
-    }
-
-    const onInputChange = (e) => {
-        const {name, value} = e.target;
+    const onInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+        const {name, value} : {name: string, value: string | number} = e.target;
         store.player[name] = value;
-    }
+    };
 
     const onBack = () => {
         Router.back();
-    }
+    };
 
-    const convertBase64 = (file) => {
-        return new Promise((resolve, reject) => {
+    const convertBase64 = (file : File) => {
+        return new Promise<string>((resolve, reject) => {
             const fileReader = new FileReader();
             fileReader.readAsDataURL(file);
 
             fileReader.onload = () => {
+                // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+                // @ts-ignore
                 resolve(fileReader.result);
             };
 
@@ -56,7 +57,9 @@ const PlayerEditView = () => {
         });
     };
 
-    const uploadImage = async (event) => {
+    const uploadImage = async (event : React.ChangeEvent<HTMLInputElement>) => {
+        if (!event.target.files) return;
+
         const file = event.target.files[0];
         const base64 = await convertBase64(file);
         store.player.imageUrl = base64.toString();
@@ -105,7 +108,7 @@ const PlayerEditView = () => {
                                 onChange={(event) => store.player.position = event.target.value}>
                                 {
                                     Object.keys(POSITION).map(key => {
-                                        return <MenuItem value={key} key={key}>{key}</MenuItem>
+                                        return <MenuItem value={key} key={key}>{key}</MenuItem>;
                                     })
                                 }
                             </Select>
@@ -128,7 +131,7 @@ const PlayerEditView = () => {
                         <div className="row">
                             <div className="col">
                                 <h6>Image Preview:</h6>
-                                <img className={styles.imgPreview} id="avatar" src={store.player.imageUrl}/>
+                                <img alt="preview" className={styles.imgPreview} id="avatar" src={store.player.imageUrl}/>
                             </div>
                         </div>
                     </div>
@@ -141,7 +144,7 @@ const PlayerEditView = () => {
                 </Button>
             </Stack>
         </form>
-    </>)
+    </>);
 };
 
 export default observer(PlayerEditView);
