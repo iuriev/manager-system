@@ -4,19 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="d3456bf1-ed27-47fe-a72a-6c61f91b5bbf" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.eslintrc.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/images/logo.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.eslintrc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.stylelintrc.json" beforeDir="false" afterPath="$PROJECT_DIR$/.stylelintrc.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/teams/[alias].tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/teams/[alias].tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pages/teams/index.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/pages/teams/index.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/static/teams.ts" beforeDir="false" afterPath="$PROJECT_DIR$/static/teams.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/types/types.ts" beforeDir="false" afterPath="$PROJECT_DIR$/types/types.ts" afterDir="false" />
-    </list>
+    <list default="true" id="d3456bf1-ed27-47fe-a72a-6c61f91b5bbf" name="Changes" comment="" />
     <list id="b497b993-13c6-44b5-acea-9548fe91120c" name="Global" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -150,7 +138,7 @@
       <workItem from="1651217571133" duration="2380000" />
       <workItem from="1651219985521" duration="5621000" />
       <workItem from="1651235279843" duration="6569000" />
-      <workItem from="1651242005135" duration="312000" />
+      <workItem from="1651242005135" duration="631000" />
     </task>
     <task id="LOCAL-00002" summary="add">
       <created>1651214988730</created>
@@ -173,7 +161,21 @@
       <option name="project" value="LOCAL" />
       <updated>1651238428517</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="update logic">
+      <created>1651242359044</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1651242359045</updated>
+    </task>
+    <task id="LOCAL-00006" summary="add babel">
+      <created>1651242581763</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1651242581763</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -197,6 +199,8 @@
     <MESSAGE value="add" />
     <MESSAGE value="add correct eslint working" />
     <MESSAGE value="add getStaticProps and path" />
-    <option name="LAST_COMMIT_MESSAGE" value="add getStaticProps and path" />
+    <MESSAGE value="update logic" />
+    <MESSAGE value="add babel" />
+    <option name="LAST_COMMIT_MESSAGE" value="add babel" />
   </component>
 </project>
