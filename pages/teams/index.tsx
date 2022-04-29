@@ -6,9 +6,9 @@ import {ITeam} from "../../types/types";
 import {teams} from "../../static/teams";
 
 export const getServerSideProps = async () => {
-  //   const response = await fetch(`${process.env.API_HOST}/teamsdata`);
-  //  const data : ITeam[]= await response.json();
-    const data  = teams;
+     const response = await fetch(`${process.env.API_HOST}/teamsdata`);
+    const data : ITeam[]= await response.json();
+    //const data  = teams;
 
     if (!data) {
         return {

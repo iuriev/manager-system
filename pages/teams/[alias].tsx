@@ -8,9 +8,9 @@ import { teams } from '../../static/teams';
 
 
 export const getStaticPaths : GetStaticPaths = async () => {
-   const response = await fetch(`${process.env.API_HOST}/teamsdata`);
-   const data : ITeam [] = await response.json();
-    // const data = teams;
+   //const response = await fetch(`${process.env.API_HOST}/teamsdata`);
+   //const data : ITeam [] = await response.json();
+   const data = teams;
    const paths = data.map(({ id }) => ({
         params: { alias: id }
     }));
@@ -36,10 +36,10 @@ export const getStaticProps = async (context : getStaticPropsContext ) => {
         };
     }
 
-   const response = await fetch(`${process.env.API_HOST}/teamsdata`);
-    const data : ITeam [] = await response.json();
+    // const response = await fetch(`${process.env.API_HOST}/teamsdata`);
+    // const data : ITeam [] = await response.json();
 
-    //const data = teams;
+    const data = teams;
 
     if (!data) {
         return {
