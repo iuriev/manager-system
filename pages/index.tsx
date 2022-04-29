@@ -8,7 +8,7 @@ import Heading from "../components/Heading";
 import styles from "../styles/Players.module.scss";
 import {Button} from "@mui/material";
 
-const Home = () => {
+const Home = () : JSX.Element => {
     useEffect(() => {
         const players = api.queryPlayers();
         store.setPlayers(players);

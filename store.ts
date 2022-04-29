@@ -1,5 +1,5 @@
 import { configure, makeAutoObservable } from "mobx";
-import IPlayer from "./types/types";
+import {IPlayer} from "./types/types";
 configure({
     enforceActions: "never",
 });

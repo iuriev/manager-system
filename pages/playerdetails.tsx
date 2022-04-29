@@ -7,7 +7,7 @@ import store from "../store";
 import styles from "../styles/Players.module.scss";
 import {Button, Stack} from "@mui/material";
 import {observer} from "mobx-react-lite";
-import IPlayer from "../types/types";
+import {IPlayer} from "../types/types";
 
 const Player = () => {
     const router = useRouter();

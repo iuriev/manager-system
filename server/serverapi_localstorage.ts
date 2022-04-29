@@ -1,5 +1,5 @@
 import axios from "axios";
-import IPlayer from "../types/types";
+import {IPlayer} from "../types/types";
 
 const KEY = "players";
 
