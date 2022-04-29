@@ -22,5 +22,13 @@ export const teams = [
     foundation: 2000,
     position: 5,
     players: [6,7]
+  },
+  {
+    id: 't',
+    name: 'arsenal',
+    imageUrl: '/images/logo.png',
+    foundation: 2000,
+    position: 10,
+    players: [6,7]
   }
 ];
