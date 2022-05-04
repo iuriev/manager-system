@@ -4,7 +4,7 @@ import Image from "next/image";
 import styles from '../../styles/Players.module.scss';
 import {GetStaticPaths} from "next";
 import {ITeam} from "../../types/types";
-import { teams } from '../../static/teams';
+import { teams } from '../../public/teams';
 
 
 export const getStaticPaths : GetStaticPaths = async () => {

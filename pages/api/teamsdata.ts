@@ -1,4 +1,4 @@
-import { teams } from '../../static/teams';
+import { teams } from '../../public/teams';
 import type { NextApiRequest, NextApiResponse } from 'next';
 
 export default function handler(req: NextApiRequest, res: NextApiResponse) {

@@ -5,18 +5,24 @@ const KEY = "players";
 
 class LocalStorageAPI {
     queryPlayers() {
-        const value = localStorage.getItem(KEY);
+        return new Promise<IPlayer[]>((resolve, reject) => {
+            const value = localStorage.getItem(KEY);
 
-        if (!value) {
-            const url = "/static/players.json";
-            axios.get(url)
-                .then(reply => {
-                    localStorage.setItem(KEY, JSON.stringify(reply.data));
-                    return reply.data;
-                });
-        } else {
-            return JSON.parse(value);
-        }
+            if (!value) {
+                const url = "/static/players.json";
+                axios.get(url)
+                    .then(reply => {
+                        localStorage.setItem(KEY, JSON.stringify(reply.data));
+                        resolve(reply.data);
+                    })
+                    .catch ( () => {
+                        reject();
+                    });
+            } else {
+                const data = JSON.parse(value);
+                resolve(data);
+            }
+        });
     }
 
     getPlayer(id : string) {
@@ -53,7 +59,7 @@ class LocalStorageAPI {
                         x.imageUrl = item.imageUrl;
                         x.age = item.age;
                         x.position = item.position;
-                        x.skills = item.skills;
+                        x.date = item.date;
                     }
                 }
             }

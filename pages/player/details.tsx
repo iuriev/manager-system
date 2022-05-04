@@ -1,13 +1,13 @@
 import Link from 'next/link';
 import Head from 'next/head';
 import Router, {useRouter} from 'next/router';
-import {useEffect} from 'react';
-import api from "../server/config";
-import store from "../store";
-import styles from "../styles/Players.module.scss";
+import React, {useEffect} from 'react';
+import api from "../../server/config";
+import store from "../../store";
+import styles from "../../styles/Players.module.scss";
 import {Button, Stack} from "@mui/material";
 import {observer} from "mobx-react-lite";
-import {IPlayer} from "../types/types";
+import {IPlayer} from "../../types/types";
 
 const Player = () => {
     const router = useRouter();
@@ -41,6 +41,7 @@ const Player = () => {
                 <title>{store.player.lastName}</title>
             </Head>
             <div className={styles.playerBlockColumn}>
+                <Stack direction="row" spacing={2}>
                 <div className={styles.playerInfoBlock}>
                     <div className={styles.playerInfoRow}>
                         <div className={styles.rowTitle}>Last name:</div>
@@ -67,9 +68,11 @@ const Player = () => {
                         </div>
                     </div>
                 </div>
+                    <img alt="preview" className={styles.imgPreview} id="avatar" src={store.player.imageUrl}/>
+                </Stack>
                 <Stack direction="row" spacing={2}>
                     <Button variant="contained" color="secondary" onClick={onBack}>Back</Button>
-                    <Link href={"/playeredit?id=" + id} passHref>
+                    <Link href={"/player/edit?id=" + id} passHref>
                         <Button variant="contained" color="success">
                             Edit
                         </Button>
@@ -79,7 +82,6 @@ const Player = () => {
                     </Button>
                 </Stack>
             </div>
-
         </>
     );
 };

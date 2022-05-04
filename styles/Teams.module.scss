@@ -6,7 +6,7 @@
   flex-direction: column;
 }
 
-.playerBlock{
+.playerBlock {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -15,21 +15,21 @@
   min-height: 500px;
 }
 
-.playerInfoBlock{
+.playerInfoBlock {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
 }
 
-.buttonsBlock{
+.buttonsBlock {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
 }
 
-.playerInfoRow{
+.playerInfoRow {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
@@ -37,16 +37,16 @@
   align-items: center;
 }
 
-.rowTitle{
+.rowTitle {
   width: 150px;
   font-weight: bold;
 }
 
-.rowDataTitle{
+.rowDataTitle {
   width: 400px;
 }
 
-.playerImage{
+.playerImage {
   display: flex;
   justify-content: center;
 }

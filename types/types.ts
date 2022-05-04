@@ -5,7 +5,8 @@ export interface IPlayer {
     age: number
     position: string
     imageUrl: string
-    [key: string]: any;
+    group: string
+    date: Date | null
 }
 
 export interface ITeam {
@@ -15,6 +16,7 @@ export interface ITeam {
     imageUrl: string
     foundation: number
     players: number[]
+
 }
 
 export enum POSITION {
@@ -23,5 +25,3 @@ export enum POSITION {
     midfielder = "Midfielder",
     striker = "Striker",
 }
-
-

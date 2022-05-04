@@ -4,15 +4,14 @@ import api from "../server/config";
 import '../styles/globals.scss';
 import {useEffect} from "react";
 import Layout from "../components/Layout";
-import { AppProps } from 'next/app';
+import {AppProps} from 'next/app';
+import {IPlayer} from "../types/types";
 
-function MyApp({Component, pageProps} : AppProps) {
+function MyApp({Component, pageProps}: AppProps) {
 
     useEffect(() => {
-        console.info("app did mount");
-
-        const players = api.queryPlayers();
-        store.setPlayers(players);
+        api.queryPlayers()
+            .then((players: IPlayer[]) => store.setPlayers(players));
     }, []);
     return (
         <Layout>

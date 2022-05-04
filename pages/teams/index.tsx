@@ -3,12 +3,10 @@ import Heading from "../../components/Heading";
 import Link from "next/link";
 import styles from '../../styles/Players.module.scss';
 import {ITeam} from "../../types/types";
-import {teams} from "../../static/teams";
 
 export const getServerSideProps = async () => {
-     const response = await fetch(`${process.env.API_HOST}/teamsdata`);
-    const data : ITeam[]= await response.json();
-    //const data  = teams;
+    const response = await fetch(`${process.env.API_HOST}/teamsdata`);
+    const data: ITeam[] = await response.json();
 
     if (!data) {
         return {
@@ -23,7 +21,7 @@ export const getServerSideProps = async () => {
     };
 };
 
-const Teams = ({ teams } : { teams : ITeam[] }) => {
+const Teams = ({teams}: { teams: ITeam[] }) => {
     return (
         <>
             <Head>
@@ -32,7 +30,7 @@ const Teams = ({ teams } : { teams : ITeam[] }) => {
             <Heading text="Players list:" tag={'h3'}/>
             <div className={styles.wrapper}>
                 {
-                    teams.map(({id, name, foundation }) => (
+                    teams.map(({id, name, foundation}) => (
                         <Link key={id} href={`/teams/${id}`}>
                             <a>{`${id} ${name} ${foundation}`}</a>
                         </Link>
